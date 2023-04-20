@@ -97,9 +97,12 @@ void *convolute_thread(void* rank) {
 void convolute(){
     args.nThreads = N;
     pthread_t threadArr[args.nThreads];
-
+    int tids[args.nThreads];
+    for(int i = 0; i < args.nThreads; i++){
+        tids[i] = i;
+    }
     for (int i = 0; i < args.nThreads; i++){
-        if(!pthread_create(&threadArr[i], NULL, convolute_thread, (void *)i)){
+        if(!pthread_create(threadArr + i, NULL, convolute_thread, (void *) i)){
             fprintf(stderr, "Error creating thread %d\n", i);
             exit(EXIT_FAILURE);
         }
