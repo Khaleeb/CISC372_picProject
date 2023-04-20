@@ -76,7 +76,7 @@ void *convolute_thread(void* rank) {
     Image* srcImage = &args.srcImage;
     Image* destImage = &args.destImage;
     int threadRows = srcImage->height/nThreads;
-    printf("thread %d start"), tRank;
+    printf("thread %d start", tRank);
     for (row = (tRank*threadRows); row < ((tRank+1)*threadRows); row++){
         for (pix=0;pix<srcImage->width;pix++){
             for (bit=0;bit<srcImage->bpp;bit++){
@@ -84,7 +84,7 @@ void *convolute_thread(void* rank) {
             }
         }
     }
-    printf("thread %d end"), tRank;
+    printf("thread %d end", tRank);
     return 0;
 }
 
@@ -160,7 +160,7 @@ int main(int argc,char** argv){
 
     args.algorithm = &algorithms[type];
     Image bwImage;   
-    args.srcImage.data=stbi_l   oad(fileName,&args.srcImage.width,&args.srcImage.height,&args.srcImage.bpp,0);
+    args.srcImage.data=stbi_load(fileName,&args.srcImage.width,&args.srcImage.height,&args.srcImage.bpp,0);
     if (!args.srcImage.data){
         printf("Error loading file %s.\n",fileName);
         return -1;
