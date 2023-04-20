@@ -160,7 +160,7 @@ int main(int argc,char** argv){
 
     args.algorithm = &algorithms[type];
     Image bwImage;   
-    args.srcImage.data=stbi_load(fileName,&args.srcImage.width,&args.srcImage.height,&args.srcImage.bpp,0);
+    args.srcImage.data=stbi_l   oad(fileName,&args.srcImage.width,&args.srcImage.height,&args.srcImage.bpp,0);
     if (!args.srcImage.data){
         printf("Error loading file %s.\n",fileName);
         return -1;
