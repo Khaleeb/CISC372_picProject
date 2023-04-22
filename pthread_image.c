@@ -98,11 +98,11 @@ void convolute(){
     args.nThreads = N;
     pthread_t threadArr[args.nThreads];
     int tids[args.nThreads];
-    int val;
-    for(int i = 0; i < args.nThreads; i++){
+    int val,i;
+    for(i = 0; i < args.nThreads; i++){
         tids[i] = i;
     }
-    for (int i = 0; i < args.nThreads; i++){
+    for (i = 0; i < args.nThreads; i++){
         val=pthread_create(threadArr + i, NULL, convolute_thread, (void *) i);
         if(val){
             fprintf(stderr, "Error creating thread %d\n", i);
@@ -111,7 +111,7 @@ void convolute(){
         
     }
 
-    for (int i = 0; i < args.nThreads; i++){
+    for (i = 0; i < args.nThreads; i++){
         if(pthread_join(threadArr[i], NULL)){
             fprintf(stderr, "Error joining thread %d\n", i);
             exit(EXIT_FAILURE);
