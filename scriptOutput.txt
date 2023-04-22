@@ -1,0 +1,9 @@
+Script started on Fri Apr 21 21:16:30 2023
+]0;caldavis@r1n00.darwin:~/CISC372_picProject[?1034h[caldavis@r1n00 CISC372_picProject]$ srun ./opm  mpImage.o pic1.jpg edge
+Took 8 seconds
+]0;caldavis@r1n00.darwin:~/CISC372_picProject[caldavis@r1n00 CISC372_picProject]$ srun ./ompImage.o pic1.jpg edge[1P[1P[1P[1@p[1@t[1@h[1@r[1@e[1@a[1@d
+Took 6 seconds
+]0;caldavis@r1n00.darwin:~/CISC372_picProject[caldavis@r1n00 CISC372_picProject]$ exit
+exit
+
+Script done on Fri Apr 21 21:17:04 2023
