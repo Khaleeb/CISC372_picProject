@@ -76,7 +76,7 @@ void *convolute_thread(void* rank) {
     Image* srcImage = &args.srcImage;
     Image* destImage = &args.destImage;
     int threadRows = srcImage->height/nThreads;
-    printf("thread %d start", tRank);
+    //printf("thread %d start", tRank);
     for (row = (tRank*threadRows); row < ((tRank+1)*threadRows); row++){
         for (pix=0;pix<srcImage->width;pix++){
             for (bit=0;bit<srcImage->bpp;bit++){
@@ -84,7 +84,7 @@ void *convolute_thread(void* rank) {
             }
         }
     }
-    printf("thread %d end", tRank);
+    //printf("thread %d end", tRank);
     return 0;
 }
 
@@ -98,11 +98,13 @@ void convolute(){
     args.nThreads = N;
     pthread_t threadArr[args.nThreads];
     int tids[args.nThreads];
+    int val;
     for(int i = 0; i < args.nThreads; i++){
         tids[i] = i;
     }
     for (int i = 0; i < args.nThreads; i++){
-        if(!pthread_create(threadArr + i, NULL, convolute_thread, (void *) i)){
+        val=pthread_create(threadArr + i, NULL, convolute_thread, (void *) i);
+        if(val){
             fprintf(stderr, "Error creating thread %d\n", i);
             exit(EXIT_FAILURE);
         }
@@ -110,7 +112,7 @@ void convolute(){
     }
 
     for (int i = 0; i < args.nThreads; i++){
-        if(!pthread_join(threadArr[i], NULL)){
+        if(pthread_join(threadArr[i], NULL)){
             fprintf(stderr, "Error joining thread %d\n", i);
             exit(EXIT_FAILURE);
         }
